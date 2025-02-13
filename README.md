@@ -51,32 +51,43 @@ We define "Discriminating Terms" as words or phrases that appear significantly m
 3. **Compute the Poisson Distribution for Term Significance**  
 To determine whether a term is significantly overrepresented in protein production papers, we use the Poisson distribution. Given that term frequencies follow a power-law distribution in natural language, the Poisson distribution helps model rare but meaningful occurrences of specific terms.  
 
-The probability of observing \( n \) occurrences of a word in protein production papers, given its expected frequency across all papers, is:  
+---
+layout: default
+---
 
-\[
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+## Probability Calculation for Discriminating Terms
+
+The probability of observing \( n \) occurrences of a word in protein production papers, given its expected frequency across all papers, is:
+
+$$
 p(n | N, f) = e^{-Nf} \cdot \frac{(Nf)^n}{n!}
-\]
+$$
 
 Where:  
 - \( n \) is the observed frequency of the term in protein production papers.  
 - \( N \) is the total word count in protein production papers.  
 - \( f \) is the expected frequency of the term across all papers, calculated as:  
 
-\[
+$$
 f = \frac{C_{NP}}{\sum C_{NP}}
-\]
+$$
 
-To avoid floating-point errors, we reformulate the equation in logarithmic terms:  
+To avoid floating-point errors, we reformulate the equation in logarithmic terms:
 
-\[
+$$
 \ln p(n | N, f) = -Nf + n \ln(Nf) - \ln(n!)
-\]
+$$
 
-For larger values of \( n \), Stirling’s approximation is used for factorial computation:  
+For larger values of \( n \), Stirling’s approximation is used for factorial computation:
 
-\[
+$$
 \ln(n!) \approx n \ln n - n
-\]
+$$
+
 
 Using this method, we rank words based on how significantly they deviate from their expected frequency. Terms with the highest deviation are considered Discriminating Terms.  
 
