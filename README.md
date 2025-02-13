@@ -43,10 +43,28 @@ We define "Discriminating Terms" as words or phrases that appear significantly m
    - Remove stopwords (e.g., "the," "and," "of") using a standard stopword list.  
    - Apply lemmatization to normalize word forms (e.g., "purifies" → "purify").  
 
-2. **Calculate Word Frequencies in Each Category**  
-   - Count occurrences of each word in the Protein Production corpus (\(C_{PP}\)).  
-   - Count occurrences of each word in the Non-Protein Production corpus (\(C_{NP}\)).  
-   - Normalize word frequencies by the total word count in each corpus.  
+
+2. Calculate Word Frequencies in Each Category  
+To determine the significance of words in protein production research, we compute their frequency in two distinct corpora:  
+
+- Count occurrences of each word in the **Protein Production corpus** (\( C_{PP} \)).  
+- Count occurrences of each word in the **Non-Protein Production corpus** (\( C_{NP} \)).  
+- Normalize word frequencies by the total word count in each corpus:
+
+$$
+f_{PP}(w) = \frac{C_{PP}(w)}{\sum C_{PP}}
+$$
+
+$$
+f_{NP}(w) = \frac{C_{NP}(w)}{\sum C_{NP}}
+$$
+
+Where:  
+- \( f_{PP}(w) \) is the normalized frequency of word \( w \) in the Protein Production corpus.  
+- \( f_{NP}(w) \) is the normalized frequency of word \( w \) in the Non-Protein Production corpus.  
+- \( C_{PP}(w) \) and \( C_{NP}(w) \) are the raw counts of word \( w \) in their respective corpora.  
+- \( \sum C_{PP} \) and \( \sum C_{NP} \) are the total word counts in each corpus.  
+
 
 3. **Compute the Poisson Distribution for Term Significance**  
 To determine whether a term is significantly overrepresented in protein production papers, we use the Poisson distribution. Given that term frequencies follow a power-law distribution in natural language, the Poisson distribution helps model rare but meaningful occurrences of specific terms.  
