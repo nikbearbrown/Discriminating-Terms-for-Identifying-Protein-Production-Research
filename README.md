@@ -51,14 +51,6 @@ We define "Discriminating Terms" as words or phrases that appear significantly m
 3. **Compute the Poisson Distribution for Term Significance**  
 To determine whether a term is significantly overrepresented in protein production papers, we use the Poisson distribution. Given that term frequencies follow a power-law distribution in natural language, the Poisson distribution helps model rare but meaningful occurrences of specific terms.  
 
----
-layout: default
----
-
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
 ## Probability Calculation for Discriminating Terms
 
 The probability of observing \( n \) occurrences of a word in protein production papers, given its expected frequency across all papers, is:
